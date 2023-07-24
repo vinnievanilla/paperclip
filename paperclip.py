@@ -11,7 +11,7 @@ with st.sidebar:
 st.title("Allegro Assistant")
 
 """
-Allegro Assistant
+Place for transparent assumptions
 """
 
 if "messages" not in st.session_state:
