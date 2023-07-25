@@ -52,13 +52,7 @@ class CustomPromptTemplate(StringPromptTemplate):
         kwargs["tool_names"] = ", ".join([tool.name for tool in self.tools])
         return self.template.format(**kwargs)
 
-prompt = CustomPromptTemplate(
-    template=template,
-    tools=tools,
-    # This omits the `agent_scratchpad`, `tools`, and `tool_names` variables because those are generated dynamically
-    # This includes the `intermediate_steps` variable because that is needed
-    input_variables=["input", "intermediate_steps"]
-)
+
 
 class CustomOutputParser(AgentOutputParser):
 
@@ -85,6 +79,16 @@ output_parser = CustomOutputParser()
 
 llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=openai_api_key, streaming=True)
 search = DuckDuckGoSearchRun(name="Search")
+
+prompt = CustomPromptTemplate(
+    template=template,
+    tools=tools,
+    # This omits the `agent_scratchpad`, `tools`, and `tool_names` variables because those are generated dynamically
+    # This includes the `intermediate_steps` variable because that is needed
+    input_variables=["input", "intermediate_steps"]
+)
+
+
 agent_executor = AgentExecutor.from_agent_and_tools(agent=agent, tools=[search], verbose=True)
 
 # LLM chain consisting of the LLM and a prompt
