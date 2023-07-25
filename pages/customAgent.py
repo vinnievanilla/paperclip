@@ -100,9 +100,6 @@ prompt = CustomPromptTemplate(
     input_variables=["input", "intermediate_steps"]
 )
 
-
-agent_executor = AgentExecutor.from_agent_and_tools(agent=agent, tools=tools, verbose=True)
-
 # LLM chain consisting of the LLM and a prompt
 llm_chain = LLMChain(llm=llm, prompt=prompt)
 
@@ -113,6 +110,10 @@ agent = LLMSingleActionAgent(
     stop=["\nObservation:"],
     allowed_tools=tool_names
 )
+
+agent_executor = AgentExecutor.from_agent_and_tools(agent=agent, tools=tools, verbose=True)
+
+
 
 
 
