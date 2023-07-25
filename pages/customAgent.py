@@ -10,7 +10,7 @@ from typing import List, Union
 from langchain.schema import AgentAction, AgentFinish, OutputParserException
 import re
 
-template = """Answer the following questions as best you can, but speaking as a pirate might speak. You have access to the following tools:
+template = """Answer the following questions as best you can and answer in polish. You have access to the following tools:
 
 {tools}
 
@@ -25,7 +25,7 @@ Observation: the result of the action
 Thought: I now know the final answer
 Final Answer: the final answer to the original input question
 
-Begin! Remember to speak as a pirate when giving your final answer. Use lots of "Arg"s
+Begin! Remember to answer in polish when giving your final answer.
 
 Question: {input}
 {agent_scratchpad}"""
