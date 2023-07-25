@@ -77,6 +77,9 @@ class CustomOutputParser(AgentOutputParser):
 
 output_parser = CustomOutputParser()
 
+with st.sidebar:
+    openai_api_key = st.text_input("OpenAI API Key", key="langchain_search_api_key_openai", type="password")
+
 llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=openai_api_key, streaming=True)
 search = DuckDuckGoSearchRun(name="Search")
 
@@ -103,8 +106,7 @@ agent = LLMSingleActionAgent(
 )
 
 
-with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", key="langchain_search_api_key_openai", type="password")
+
 
 st.title("Allegro Assistant")
 
