@@ -101,7 +101,7 @@ prompt = CustomPromptTemplate(
 )
 
 
-agent_executor = AgentExecutor.from_agent_and_tools(agent=agent, tools=[search], verbose=True)
+agent_executor = AgentExecutor.from_agent_and_tools(agent=agent, tools=tools, verbose=True)
 
 # LLM chain consisting of the LLM and a prompt
 llm_chain = LLMChain(llm=llm, prompt=prompt)
