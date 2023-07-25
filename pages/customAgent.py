@@ -83,9 +83,18 @@ with st.sidebar:
 llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=openai_api_key, streaming=True)
 search = DuckDuckGoSearchRun(name="Search")
 
+tools = [
+    Tool(
+        name = "Search",
+        func=DuckDuckGoSearchRun(name="Search"),
+        description="useful for when you need to answer questions about current events"
+    )
+]
+
+
 prompt = CustomPromptTemplate(
     template=template,
-    tools=search,
+    tools=tools,
     # This omits the `agent_scratchpad`, `tools`, and `tool_names` variables because those are generated dynamically
     # This includes the `intermediate_steps` variable because that is needed
     input_variables=["input", "intermediate_steps"]
