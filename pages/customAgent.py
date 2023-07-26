@@ -11,7 +11,7 @@ from langchain.schema import AgentAction, AgentFinish, OutputParserException
 import re
 
 template = """You are customer assistant in Allegro marketplace. Your task is to understand what product the customer is looking for.
-If the product description given by the customer is not precise, you should ask additional questions to understand their needs better.
+If the product description given by the customer is not precise, you should ask additional questions to understand their needs better - in this situation the set of questions will be your final answer.
 Once you have a clear understanding, you should provide a product name that can be used in the Allegro search. REMEMBER - the product should be generalized.
 Your response should always be in Polish.
 You have access to the following tools:
