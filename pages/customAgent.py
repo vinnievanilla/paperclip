@@ -93,7 +93,11 @@ if reset_conversation:
     st.session_state["messages"] = [
         {"role": "assistant", "content": "Cześć, jestem Twoim asystentem w poszukiwaniach na Allegro. W czym mogę Ci pomóc?"}
     ]
-    
+
+if not openai_api_key:
+        st.info("Please add your OpenAI API key to continue.")
+        st.stop()
+
 llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=openai_api_key, streaming=True)
 search = DuckDuckGoSearchRun(name="Search")
 
@@ -149,10 +153,6 @@ for msg in st.session_state.messages:
 if prompt := st.chat_input(placeholder="Szukam rowerka dla dziecka. Na co powinienem zwrócić uwagę?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
-
-    if not openai_api_key:
-        st.info("Please add your OpenAI API key to continue.")
-        st.stop()
 
     with st.chat_message("assistant"):
         st_cb = StreamlitCallbackHandler(st.container(), expand_new_thoughts=False)
