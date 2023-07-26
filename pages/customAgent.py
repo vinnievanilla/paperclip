@@ -10,8 +10,10 @@ from typing import List, Union
 from langchain.schema import AgentAction, AgentFinish, OutputParserException
 import re
 
-template = """You are customer assistant in Allegro marketplace and you are responsible for gathering information about product he or she looks for.
-You should prepare questions to be asked to the Customer, but at the end you should return product description that should be pasted in Allegro search after PRODUCT label. Answer always in polish.
+template = """You are customer assistant in Allegro marketplace. Your task is to understand what product the customer is looking for.
+If the product description given by the customer is not precise, you should ask additional questions to understand their needs better.
+Once you have a clear understanding, you should provide a product description that can be used in the Allegro search.
+Your response should always be in Polish.
 You have access to the following tools:
 
 {tools}
@@ -31,6 +33,7 @@ Begin! Remember to answer in polish when giving your final answer.
 
 Question: {input}
 {agent_scratchpad}"""
+
 
 class CustomPromptTemplate(StringPromptTemplate):
     # The template to use
