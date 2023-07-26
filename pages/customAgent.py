@@ -86,7 +86,13 @@ output_parser = CustomOutputParser()
 
 with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", key="langchain_search_api_key_openai", type="password")
+    reset_conversation = st.button("Reset Conversation")  # Button to reset the conversation
 
+# If the reset button is clicked, reset the messages in the session state
+if reset_conversation:
+    st.session_state["messages"] = [
+        {"role": "assistant", "content": "Cześć, jestem Twoim asystentem w poszukiwaniach na Allegro. W czym mogę Ci pomóc?"}
+    ]
 llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=openai_api_key, streaming=True)
 search = DuckDuckGoSearchRun(name="Search")
 
