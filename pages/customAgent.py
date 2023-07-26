@@ -93,6 +93,7 @@ if reset_conversation:
     st.session_state["messages"] = [
         {"role": "assistant", "content": "Cześć, jestem Twoim asystentem w poszukiwaniach na Allegro. W czym mogę Ci pomóc?"}
     ]
+    
 llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=openai_api_key, streaming=True)
 search = DuckDuckGoSearchRun(name="Search")
 
