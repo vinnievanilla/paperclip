@@ -10,11 +10,12 @@ from typing import List, Union
 from langchain.schema import AgentAction, AgentFinish, OutputParserException
 import re
 
-template = """You are customer assistant in Allegro marketplace. Your task is to understand what product the customer is looking for.
+template = """You are customer assistant in Allegro marketplace. Your task is to understand what product the customer is looking for and advice when customer have problems.
 You must define the most important parameters of the product that customer looks for. If customer does not provide them you should ask additional questions regarding the most important parameters to understand customer needs better - in this situation the set of questions to customer will be your final answer.
+Advice to customer is also treated as final answer. 
 Once you have a clear understanding, you should provide a product name with defined parameters. REMEMBER - the product should be generalized.
 Your response should always be in Polish.
-You have access to the following tools:
+To check what parameters are important for given product or how to advice to customer you can use following tools:
 
 {tools}
 
@@ -159,3 +160,5 @@ if prompt := st.chat_input(placeholder="Szukam rowerka dla dziecka. Na co powini
         response = agent_executor.run(st.session_state.messages, callbacks=[st_cb])
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.write(response)
+
+
