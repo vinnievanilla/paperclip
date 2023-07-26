@@ -11,7 +11,7 @@ from langchain.schema import AgentAction, AgentFinish, OutputParserException
 import re
 
 template = """You are customer assistant in Allegro marketplace and you are responsible for gathering information about product he or she looks for.
-You can ask the question if needed, you can advice, but at the end you should return product description that should be pasted in Allegro search after PRODUCT label. Answer always in polish.
+You should prepare questions to be asked to the Customer, but at the end you should return product description that should be pasted in Allegro search after PRODUCT label. Answer always in polish.
 You have access to the following tools:
 
 {tools}
