@@ -23,12 +23,12 @@ Use the following format:
 
 Question: the input question you must answer
 Thought: you should always think about what to do or what question you want to ask to Customer
-Action: the action to take, should be one of [{tool_names}]
+Action: the action to take, must be one of [{tool_names}]
 Action Input: the input to the action
 Observation: the result of the action
 ... (this Thought/Action/Action Input/Observation can repeat N times)
 Thought: I now know the final answer
-Final Answer: the final answer to the original input question or questions about product parameters
+Final Answer: the final answer to the original input question or questions to customer about product parameters or advice regarding the customer need
 
 Begin! Remember to answer in polish when giving your final answer.
 
