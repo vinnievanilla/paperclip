@@ -160,6 +160,6 @@ if prompt := st.chat_input(placeholder="Szukam rowerka dla dziecka. Na co powini
         response = agent_executor.run(st.session_state.messages, callbacks=[st_cb])
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.write(response)
-        st.write(st.session_state.messages)
+        #st.write(st.session_state.messages)
 
 
